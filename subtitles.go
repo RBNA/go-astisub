@@ -53,7 +53,7 @@ var Now = func() time.Time {
 // Options represents open or write options
 type Options struct {
 	Filename string
-	Teletext TeletextOptions
+	// Teletext TeletextOptions
 }
 
 // Open opens a subtitle reader based on options
@@ -68,16 +68,17 @@ func Open(o Options) (s *Subtitles, err error) {
 
 	// Parse the content
 	switch filepath.Ext(o.Filename) {
-	case ".srt":
-		s, err = ReadFromSRT(f)
-	case ".ssa", ".ass":
-		s, err = ReadFromSSA(f)
-	case ".stl":
-		s, err = ReadFromSTL(f)
-	case ".ts":
-		s, err = ReadFromTeletext(f, o.Teletext)
-	case ".ttml":
-		s, err = ReadFromTTML(f)
+
+	// case ".srt":
+	// 	s, err = ReadFromSRT(f)
+	// case ".ssa", ".ass":
+	// 	s, err = ReadFromSSA(f)
+	// case ".stl":
+	// 	s, err = ReadFromSTL(f)
+	// case ".ts":
+	// 	s, err = ReadFromTeletext(f, o.Teletext)
+	// case ".ttml":
+	// 	s, err = ReadFromTTML(f)
 	case ".vtt":
 		s, err = ReadFromWebVTT(f)
 	default:
@@ -575,14 +576,14 @@ func (s Subtitles) Write(dst string) (err error) {
 
 	// Write the content
 	switch filepath.Ext(dst) {
-	case ".srt":
-		err = s.WriteToSRT(f)
-	case ".ssa", ".ass":
-		err = s.WriteToSSA(f)
-	case ".stl":
-		err = s.WriteToSTL(f)
-	case ".ttml":
-		err = s.WriteToTTML(f)
+	// case ".srt":
+	// 	err = s.WriteToSRT(f)
+	// case ".ssa", ".ass":
+	// 	err = s.WriteToSSA(f)
+	// case ".stl":
+	// 	err = s.WriteToSTL(f)
+	// case ".ttml":
+	// 	err = s.WriteToTTML(f)
 	case ".vtt":
 		err = s.WriteToWebVTT(f)
 	default:
